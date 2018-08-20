@@ -10,10 +10,13 @@ const toggleCamera = () => {
 		if (this.readyState == 4 && this.status == 200) {
 		  console.log(this.responseText);
 		  cameraOn = !cameraOn;
-		  let active = cameraOn ? "active":"";
-		  document.querySelector(".cam").classList.add(active);
+		  if (cameraOn) {
+			  document.querySelector(".cam").classList.add("active");
+		  }else{
+			  document.querySelector(".cam").classList.remove("active");
+		  }
 		}
 	};
-	
+
 	camReq.send();
 };
