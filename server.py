@@ -12,7 +12,7 @@ def toggle_camera():
 	camera_off = subprocess.call(["systemctl", "is-active", "--quiet", "stream-cam.service"])
 	if camera_off:
 		subprocess.call(["systemctl", "start", "stream-cam.service"])
-		return "Camera on"
+		return "on"
 	else:
 		subprocess.call(["systemctl", "stop", "stream-cam.service"])
-		return "Camera off"
+		return "off"
