@@ -2,6 +2,7 @@ from flask import Flask
 import subprocess 
 app = Flask(__name__)
 
+global CAMERA_ON
 CAMERA_ON = False
 
 @app.route('/')
