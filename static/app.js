@@ -1,1 +1,2 @@
-alert('My JS Loaded!')
+
+const toggleCamera = () => $.post( "/cam", {toggle:true}, (resp) => console.log(resp));
