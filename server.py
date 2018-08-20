@@ -8,4 +8,4 @@ def hello_world():
 @app.route('/cam')
 def toggle_camera():
 	print('Cam route')
-    return "Camera on"
+	return "Camera on"
