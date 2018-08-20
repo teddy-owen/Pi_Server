@@ -2,8 +2,6 @@ from flask import Flask
 import subprocess 
 app = Flask(__name__)
 
-global CAMERA_ON
-CAMERA_ON = False
 
 @app.route('/')
 def hello_world():
@@ -11,11 +9,10 @@ def hello_world():
 
 @app.route('/cam')
 def toggle_camera():
-	if not CAMERA_ON:
+	camera_off = subprocess.call(["systemctl", "is-active", "--quiet", "stream-cam.service"])
+	if camera_off:
 		subprocess.call(["systemctl", "start", "stream-cam.service"])
-		CAMERA_ON = True
 		return "Camera on"
 	else:
 		subprocess.call(["systemctl", "stop", "stream-cam.service"])
-		CAMERA_ON = False
 		return "Camera off"
