@@ -12,6 +12,7 @@ def toggle_camera():
 	camera_off = subprocess.call(["systemctl", "is-active", "--quiet", "stream-cam.service"])
 	if camera_off:
 		subprocess.call(["systemctl", "start", "stream-cam.service"])
+		# subprocess.call(["mjpg_streamer", "-o", "'output_http.so -w ./www'", "-i", "'input_raspicam.so -fps 25'"])
 		return "on"
 	else:
 		subprocess.call(["systemctl", "stop", "stream-cam.service"])
